@@ -2,4 +2,5 @@
 
 # Reiki Engine
 
-Implementing a basic game engine to be reused, based on things learned during 427 project.
+Creating a basic game engine for future projects, using GLFW, GLAD, ...
+Based on knowledge gained from working on our  CPSC 427 game.
