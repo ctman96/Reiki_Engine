@@ -24,6 +24,7 @@ endif()
 
 
 set(SOURCE_FILES
+        libs/GLAD/glad.c
         main.cpp
         src/Window.cpp
         src/Window.hpp)
@@ -36,7 +37,8 @@ target_include_directories(${PROJECT_NAME} PUBLIC src/)
 set_target_properties(${PROJECT_NAME} PROPERTIES ENABLE_EXPORTS 0)
 
 
-target_include_directories(${PROJECT_NAME} PUBLIC libs/GL)
+target_include_directories(${PROJECT_NAME} PUBLIC libs/GLAD)
+target_include_directories(${PROJECT_NAME} PUBLIC libs/GLAD)
 
 
 # Find OpenGL
