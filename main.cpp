@@ -2,6 +2,9 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
+#include <math/vec2.hpp>
+#include <math/vec3.hpp>
+#include <math/vec4.hpp>
 #include "src/Window.hpp"
 
 
@@ -13,6 +16,14 @@ int main() {
     Window window("Test", 800, 600);
 
     glClearColor(0.5f,0.5f,0.5f,0.f);
+
+    vec4 a(1.f, 2.f, 3.f, 4.f);
+
+    vec4 b(100.f,200.f, 300.f, 400.f);
+
+    vec4 c = a + b;
+
+    std::cout << a << b << c << std::endl;
 
     while (!window.shouldClose()) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

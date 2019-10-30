@@ -27,7 +27,7 @@ set(SOURCE_FILES
         libs/GLAD/glad.c
         main.cpp
         src/Window.cpp
-        src/Window.hpp)
+        src/Window.hpp src/math/vec2.cpp src/math/vec2.hpp src/math/vec3.cpp src/math/vec3.hpp src/math/mat3.cpp src/math/mat3.hpp src/math/vec4.cpp src/math/vec4.hpp)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
