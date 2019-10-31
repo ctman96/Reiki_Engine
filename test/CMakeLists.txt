@@ -9,7 +9,9 @@ enable_testing()
 
 set(SOURCE_FILES
         main.cpp
+        ${REIKI_SOURCE_FILES}
         exampleTest.cpp
+        math/vec2Test.cpp
 )
 
 add_executable(

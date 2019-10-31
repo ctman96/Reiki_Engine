@@ -1,4 +1,4 @@
-set(SOURCE_FILES
+set(REIKI_SOURCE_FILES
         ${PROJECT_SOURCE_DIR}/libs/GLAD/glad.c
 
         main.cpp
@@ -9,7 +9,7 @@ set(SOURCE_FILES
         math/vec4.cpp math/vec4.hpp
         math/mat3.cpp math/mat3.hpp)
 
-add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+add_executable(${PROJECT_NAME} ${REIKI_SOURCE_FILES})
 
 # Added this so policy CMP0065 doesn't scream
 set_target_properties(${PROJECT_NAME} PROPERTIES ENABLE_EXPORTS 0)
