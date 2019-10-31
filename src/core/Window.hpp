@@ -5,8 +5,8 @@
 #ifndef REIKI_WINDOW_HPP
 #define REIKI_WINDOW_HPP
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#include "glad/glad.h"
+#include "GLFW/glfw3.h"
 #include <stdexcept>
 #include <iostream>
 

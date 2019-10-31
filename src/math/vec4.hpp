@@ -24,8 +24,8 @@ namespace Reiki {
         bool operator!=(const vec4& right);
 
         friend float dot(const vec4& left, const vec4& right);
-        float sq_len(const vec4& a) { return dot(a, a); }
-        float len(const vec4& a) { return std::sqrt(sq_len(a)); }
+        float sq_len() { return dot(*this, *this); }
+        float len() { return std::sqrt(sq_len()); }
 
         friend std::ostream& operator<<(std::ostream& os, const vec4& vec);
 

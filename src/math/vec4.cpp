@@ -8,6 +8,8 @@
 Reiki::vec4::vec4() {
     x=0.f;
     y=0.f;
+    z=0.f;
+    w=0.f;
 }
 
 Reiki::vec4::vec4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}

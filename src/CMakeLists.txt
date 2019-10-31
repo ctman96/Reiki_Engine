@@ -1,6 +1,6 @@
 ## Core source library
 set(REIKI_SOURCE_FILES
-        Window.cpp Window.hpp
+        core/Window.cpp core/Window.hpp
 
         math/vec2.cpp math/vec2.hpp
         math/vec3.cpp math/vec3.hpp

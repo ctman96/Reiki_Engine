@@ -11,6 +11,8 @@ set(SOURCE_FILES
         main.cpp
         exampleTest.cpp
         math/vec2Test.cpp
+        math/vec3Test.cpp
+        math/vec4Test.cpp
 )
 
 add_executable(
