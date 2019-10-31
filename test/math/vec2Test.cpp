@@ -115,7 +115,7 @@ TEST_F(Vec2Test, SqLen) {
 
 TEST_F(Vec2Test, Len) {
     vec2 v1(-1.f, 2.f);
-    ASSERT_EQ(sqrt(1+4), v1.sq_len());
+    ASSERT_FLOAT_EQ(sqrt(5.f), v1.len());
 }
 
 // TODO how to test operator <<
@@ -224,6 +224,6 @@ TEST_F(Vec2Test, OpAssignmentDivision) {
     ASSERT_EQ(0.25f, v1.x);
     ASSERT_EQ(2.f, v1.y);
 
-    ASSERT_EQ(2.f, v2.x);
+    ASSERT_EQ(4.f, v2.x);
     ASSERT_EQ(2.f, v2.y);
 }
