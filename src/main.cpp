@@ -2,12 +2,9 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
-#include <math/vec2.hpp>
-#include <math/vec3.hpp>
-#include <math/vec4.hpp>
-#include "src/Window.hpp"
 
-
+#include "Window.hpp"
+#include "math/vec4.hpp"
 
 
 int main() {
