@@ -4,52 +4,51 @@
 
 #include "vec3.hpp"
 
-
-Reiki::math::vec3::vec3() {
-    x=0.f;
-    y=0.f;
-    z=0.f;
-}
-
-Reiki::math::vec3::vec3(float x, float y, float z) : x(x), y(y), z(z) {}
-
-Reiki::math::vec3 &Reiki::math::vec3::add(const Reiki::math::vec3 &right) {
-    x += right.x;
-    y += right.y;
-    z += right.z;
-    return *this;
-}
-
-Reiki::math::vec3 &Reiki::math::vec3::sub(const Reiki::math::vec3 &right) {
-    x -= right.x;
-    y -= right.y;
-    z -= right.z;
-    return *this;
-}
-
-Reiki::math::vec3 &Reiki::math::vec3::mul(const Reiki::math::vec3 &right) {
-    x *= right.x;
-    y *= right.y;
-    z *= right.z;
-    return *this;
-}
-
-Reiki::math::vec3 &Reiki::math::vec3::div(const Reiki::math::vec3 &right) {
-    x /= right.x;
-    y /= right.y;
-    z /= right.z;
-    return *this;
-}
-
-bool Reiki::math::vec3::operator==(const Reiki::math::vec3 &right) {
-    return x==right.x && y==right.y && z==right.z;
-}
-
-bool Reiki::math::vec3::operator!=(const Reiki::math::vec3 &right) {
-    return !(*this==right);
-}
-
 namespace Reiki::math {
+    vec3::vec3() {
+        x=0.f;
+        y=0.f;
+        z=0.f;
+    }
+
+    vec3::vec3(float x, float y, float z) : x(x), y(y), z(z) {}
+
+    vec3 &vec3::add(const vec3 &right) {
+        x += right.x;
+        y += right.y;
+        z += right.z;
+        return *this;
+    }
+
+    vec3 &vec3::sub(const vec3 &right) {
+        x -= right.x;
+        y -= right.y;
+        z -= right.z;
+        return *this;
+    }
+
+    vec3 &vec3::mul(const vec3 &right) {
+        x *= right.x;
+        y *= right.y;
+        z *= right.z;
+        return *this;
+    }
+
+    vec3 &vec3::div(const vec3 &right) {
+        x /= right.x;
+        y /= right.y;
+        z /= right.z;
+        return *this;
+    }
+
+    bool vec3::operator==(const vec3 &right) {
+        return x==right.x && y==right.y && z==right.z;
+    }
+
+    bool vec3::operator!=(const vec3 &right) {
+        return !(*this==right);
+    }
+
     float dot(const vec3 &left, const vec3 &right) {
         return left.x * right.x + left.y * right.y +  left.z * right.z;
     }

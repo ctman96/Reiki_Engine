@@ -13,7 +13,7 @@ set(SOURCE_FILES
         math/vec2Test.cpp
         math/vec3Test.cpp
         math/vec4Test.cpp
-)
+        math/mat3Test.cpp)
 
 add_executable(
         unit_tests

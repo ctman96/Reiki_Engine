@@ -19,6 +19,7 @@ namespace Reiki::math {
         vec2& sub(const vec2& right);
         vec2& mul(const vec2& right);
         vec2& div(const vec2& right);
+        // TODO with single float - maybe template vectors
 
         bool operator==(const vec2& right);
         bool operator!=(const vec2& right);
@@ -26,6 +27,7 @@ namespace Reiki::math {
         friend float dot(const vec2& left, const vec2& right); // TODO cross product?
         float sq_len() { return dot(*this, *this); }
         float len() { return std::sqrt(sq_len()); }
+        // TODO normalize
 
         friend std::ostream& operator<<(std::ostream& os, const vec2& vec);
 
