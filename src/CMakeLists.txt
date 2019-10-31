@@ -1,7 +1,5 @@
-set(SOURCE_FILES
-        ${PROJECT_SOURCE_DIR}/libs/GLAD/glad.c
-
-        main.cpp
+## Core source library
+set(REIKI_SOURCE_FILES
         Window.cpp Window.hpp
 
         math/vec2.cpp math/vec2.hpp
@@ -9,16 +7,29 @@ set(SOURCE_FILES
         math/vec4.cpp math/vec4.hpp
         math/mat3.cpp math/mat3.hpp)
 
-add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+add_library(REIKI_CORE ${REIKI_SOURCE_FILES})
+# Include GLFW
+target_include_directories(REIKI_CORE PRIVATE ${GLFW_INCLUDE_DIRS})
+# Include Glad
+target_include_directories(REIKI_CORE PRIVATE ${PROJECT_SOURCE_DIR}/libs/GLAD)
+# Link libraries
+target_link_libraries(REIKI_CORE PRIVATE ${GLFW_LIBRARIES} GLAD)
 
+
+## Main Executable
+add_executable(${PROJECT_NAME} main.cpp)
 # Added this so policy CMP0065 doesn't scream
 set_target_properties(${PROJECT_NAME} PROPERTIES ENABLE_EXPORTS 0)
+# Include GLFW
+target_include_directories(${PROJECT_NAME} PRIVATE ${GLFW_INCLUDE_DIRS})
+# Include Glad
+target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/libs/GLAD)
+# Include src
+target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/src)
+# Link Libraries
+target_link_libraries(${PROJECT_NAME} PRIVATE REIKI_CORE ${GLFW_LIBRARIES} GLAD)
 
-
-target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/libs/GLAD)
-target_include_directories(${PROJECT_NAME} PUBLIC ${GLFW_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} PUBLIC ${GLFW_LIBRARIES})
-
+# Include Opengl
 if (OPENGL_FOUND)
     target_include_directories(${PROJECT_NAME} PUBLIC ${OPENGL_INCLUDE_DIR})
     target_link_libraries(${PROJECT_NAME} PUBLIC ${OPENGL_gl_LIBRARY})

@@ -10,6 +10,7 @@ enable_testing()
 set(SOURCE_FILES
         main.cpp
         exampleTest.cpp
+        math/vec2Test.cpp
 )
 
 add_executable(
@@ -17,9 +18,13 @@ add_executable(
         ${SOURCE_FILES}
 )
 
+# Include src
+target_include_directories(unit_tests PRIVATE ${PROJECT_SOURCE_DIR}/src)
+
 target_link_libraries(
         unit_tests
         gtest_main
+        REIKI_CORE
 )
 
 add_test(

@@ -24,8 +24,8 @@ namespace Reiki {
         bool operator!=(const vec2& right);
 
         friend float dot(const vec2& left, const vec2& right); // TODO cross product?
-        float sq_len(const vec2& a) { return dot(a, a); }
-        float len(const vec2& a) { return std::sqrt(sq_len(a)); }
+        float sq_len() { return dot(*this, *this); }
+        float len() { return std::sqrt(sq_len()); }
 
         friend std::ostream& operator<<(std::ostream& os, const vec2& vec);
 

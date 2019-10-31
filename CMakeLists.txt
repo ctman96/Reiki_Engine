@@ -55,6 +55,10 @@ elseif(IS_OS_LINUX OR IS_OS_MAC)
     endif()
 endif()
 
+## Get Glad
+add_library(GLAD ${PROJECT_SOURCE_DIR}/libs/GLAD/glad.c)
+target_include_directories(GLAD PRIVATE ${PROJECT_SOURCE_DIR}/libs/GLAD)
+
 # Can't find the include and lib. Quit.
 if (NOT GLFW_FOUND)
     message(FATAL_ERROR "Can't find GLFW." )
