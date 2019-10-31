@@ -6,7 +6,7 @@
 #include <gtest/gtest.h>
 #include "../../src/math/vec4.hpp"
 
-using namespace Reiki;
+using namespace Reiki::math;
 
 class Vec4Test : public ::testing::Test {
 protected:

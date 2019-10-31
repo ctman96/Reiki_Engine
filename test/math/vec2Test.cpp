@@ -5,7 +5,7 @@
 #include <gtest/gtest.h>
 #include "../../src/math/vec2.hpp"
 
-using namespace Reiki;
+using namespace Reiki::math;
 
 class Vec2Test : public ::testing::Test {
 protected:

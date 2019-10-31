@@ -8,7 +8,7 @@
 #include <iostream>
 #include <cmath>
 
-namespace Reiki {
+namespace Reiki::math {
     struct vec2 {
         float x,y;
 

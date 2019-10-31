@@ -32,7 +32,7 @@ namespace
     }
 }
 
-Reiki::Window::Window(const char* title, int width, int height) : m_title(title), m_width(width), m_height(height) {
+Reiki::core::Window::Window(const char* title, int width, int height) : m_title(title), m_width(width), m_height(height) {
     // Initialize keys/buttons to false
     for (bool &m_key : m_keys)
         m_key = false;
@@ -84,27 +84,27 @@ Reiki::Window::Window(const char* title, int width, int height) : m_title(title)
     glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, true);
 }
 
-Reiki::Window::~Window() {
+Reiki::core::Window::~Window() {
     glfwDestroyWindow(m_window);
     glfwTerminate();
 }
 
-void Reiki::Window::update() {
+void Reiki::core::Window::update() {
     glfwPollEvents();
     glfwSwapBuffers(m_window);
 }
 
-int Reiki::Window::shouldClose() {
+int Reiki::core::Window::shouldClose() {
     return glfwWindowShouldClose(m_window);
 }
 
-void Reiki::Window::resize(GLFWwindow *window, int width, int height) {
+void Reiki::core::Window::resize(GLFWwindow *window, int width, int height) {
     glViewport(0,0, width, height);
     m_width = width;
     m_height = height;
 }
 
-void Reiki::Window::key_callback(GLFWwindow *window, int key, int scancode, int action, int mods) {
+void Reiki::core::Window::key_callback(GLFWwindow *window, int key, int scancode, int action, int mods) {
     switch(action){
         case GLFW_RELEASE:
             m_keys[key] = false;
@@ -117,12 +117,12 @@ void Reiki::Window::key_callback(GLFWwindow *window, int key, int scancode, int 
     }
 }
 
-void Reiki::Window::cursor_position_callback(GLFWwindow *window, double xpos, double ypos) {
+void Reiki::core::Window::cursor_position_callback(GLFWwindow *window, double xpos, double ypos) {
     m_mouse.x = xpos;
     m_mouse.y = ypos;
 }
 
-void Reiki::Window::mouse_button_callback(GLFWwindow *window, int button, int action, int mods) {
+void Reiki::core::Window::mouse_button_callback(GLFWwindow *window, int button, int action, int mods) {
     switch(action){
         case GLFW_RELEASE:
             m_buttons[button] = false;
@@ -135,19 +135,19 @@ void Reiki::Window::mouse_button_callback(GLFWwindow *window, int button, int ac
     }
 }
 
-bool Reiki::Window::isKeyPressed(int key) const{
+bool Reiki::core::Window::isKeyPressed(int key) const{
     if (key >= KEY_MAX)
         return false;
     return m_keys[key];
 }
 
-bool Reiki::Window::isButtonPressed(int button) const {
+bool Reiki::core::Window::isButtonPressed(int button) const {
     if (button >= BUTTON_MAX)
         return false;
     return m_buttons[button];
 }
 
-Reiki::pos<double> Reiki::Window::getMousePosition() const{
+Reiki::core::pos<double> Reiki::core::Window::getMousePosition() const{
     return m_mouse;
 }
 

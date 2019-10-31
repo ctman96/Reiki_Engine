@@ -5,16 +5,16 @@
 #include "vec4.hpp"
 
 
-Reiki::vec4::vec4() {
+Reiki::math::vec4::vec4() {
     x=0.f;
     y=0.f;
     z=0.f;
     w=0.f;
 }
 
-Reiki::vec4::vec4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
+Reiki::math::vec4::vec4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
 
-Reiki::vec4 &Reiki::vec4::add(const Reiki::vec4 &right) {
+Reiki::math::vec4 &Reiki::math::vec4::add(const Reiki::math::vec4 &right) {
     x += right.x;
     y += right.y;
     z += right.z;
@@ -22,7 +22,7 @@ Reiki::vec4 &Reiki::vec4::add(const Reiki::vec4 &right) {
     return *this;
 }
 
-Reiki::vec4 &Reiki::vec4::sub(const Reiki::vec4 &right) {
+Reiki::math::vec4 &Reiki::math::vec4::sub(const Reiki::math::vec4 &right) {
     x -= right.x;
     y -= right.y;
     z -= right.z;
@@ -30,7 +30,7 @@ Reiki::vec4 &Reiki::vec4::sub(const Reiki::vec4 &right) {
     return *this;
 }
 
-Reiki::vec4 &Reiki::vec4::mul(const Reiki::vec4 &right) {
+Reiki::math::vec4 &Reiki::math::vec4::mul(const Reiki::math::vec4 &right) {
     x *= right.x;
     y *= right.y;
     z *= right.z;
@@ -38,7 +38,7 @@ Reiki::vec4 &Reiki::vec4::mul(const Reiki::vec4 &right) {
     return *this;
 }
 
-Reiki::vec4 &Reiki::vec4::div(const Reiki::vec4 &right) {
+Reiki::math::vec4 &Reiki::math::vec4::div(const Reiki::math::vec4 &right) {
     x /= right.x;
     y /= right.y;
     z /= right.z;
@@ -46,15 +46,15 @@ Reiki::vec4 &Reiki::vec4::div(const Reiki::vec4 &right) {
     return *this;
 }
 
-bool Reiki::vec4::operator==(const Reiki::vec4 &right) {
+bool Reiki::math::vec4::operator==(const Reiki::math::vec4 &right) {
     return x==right.x && y==right.y && z==right.z && w==right.w;
 }
 
-bool Reiki::vec4::operator!=(const Reiki::vec4 &right) {
+bool Reiki::math::vec4::operator!=(const Reiki::math::vec4 &right) {
     return !(*this==right);
 }
 
-namespace Reiki {
+namespace Reiki::math {
     float dot(const vec4 &left, const vec4 &right) {
         return left.x * right.x + left.y * right.y +  left.z * right.z +  left.w * right.w;
     }

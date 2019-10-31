@@ -9,6 +9,8 @@
 
 int main() {
     using namespace Reiki;
+    using namespace core;
+    using namespace math;
 
     Window window("Test", 800, 600);
 

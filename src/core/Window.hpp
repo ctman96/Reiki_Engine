@@ -10,7 +10,7 @@
 #include <stdexcept>
 #include <iostream>
 
-namespace Reiki {
+namespace Reiki::core {
     #define KEY_MAX 512
     #define BUTTON_MAX 16
 

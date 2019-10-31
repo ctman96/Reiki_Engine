@@ -4,46 +4,46 @@
 
 #include "vec2.hpp"
 
-Reiki::vec2::vec2() {
+Reiki::math::vec2::vec2() {
     x=0.f;
     y=0.f;
 }
 
-Reiki::vec2::vec2(float x, float y) : x(x), y(y) {}
+Reiki::math::vec2::vec2(float x, float y) : x(x), y(y) {}
 
-Reiki::vec2 &Reiki::vec2::add(const Reiki::vec2 &right) {
+Reiki::math::vec2 &Reiki::math::vec2::add(const Reiki::math::vec2 &right) {
     x += right.x;
     y += right.y;
     return *this;
 }
 
-Reiki::vec2 &Reiki::vec2::sub(const Reiki::vec2 &right) {
+Reiki::math::vec2 &Reiki::math::vec2::sub(const Reiki::math::vec2 &right) {
     x -= right.x;
     y -= right.y;
     return *this;
 }
 
-Reiki::vec2 &Reiki::vec2::mul(const Reiki::vec2 &right) {
+Reiki::math::vec2 &Reiki::math::vec2::mul(const Reiki::math::vec2 &right) {
     x *= right.x;
     y *= right.y;
     return *this;
 }
 
-Reiki::vec2 &Reiki::vec2::div(const Reiki::vec2 &right) {
+Reiki::math::vec2 &Reiki::math::vec2::div(const Reiki::math::vec2 &right) {
     x /= right.x;
     y /= right.y;
     return *this;
 }
 
-bool Reiki::vec2::operator==(const Reiki::vec2 &right) {
+bool Reiki::math::vec2::operator==(const Reiki::math::vec2 &right) {
     return x==right.x && y==right.y;
 }
 
-bool Reiki::vec2::operator!=(const Reiki::vec2 &right) {
+bool Reiki::math::vec2::operator!=(const Reiki::math::vec2 &right) {
     return !(*this==right);
 }
 
-namespace Reiki {
+namespace Reiki::math {
     float dot(const vec2 &left, const vec2 &right) {
         return left.x * right.x + left.y * right.y;
     }
