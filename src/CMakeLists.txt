@@ -5,7 +5,8 @@ set(REIKI_SOURCE_FILES
         math/vec2.cpp math/vec2.hpp
         math/vec3.cpp math/vec3.hpp
         math/vec4.cpp math/vec4.hpp
-        math/mat3.cpp math/mat3.hpp)
+        math/mat3.cpp math/mat3.hpp
+        utils/FileUtils.hpp graphics/Shader.cpp graphics/Shader.hpp math/math.hpp)
 
 add_library(REIKI_CORE ${REIKI_SOURCE_FILES})
 # Include GLFW

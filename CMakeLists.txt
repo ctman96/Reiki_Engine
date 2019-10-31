@@ -32,6 +32,10 @@ else()
 endif()
 
 
+# Generate the folder location to the header
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/src/project_path.hpp.in" "${CMAKE_CURRENT_SOURCE_DIR}/src/project_path.hpp")
+
+
 # Find OpenGL
 find_package(OpenGL REQUIRED)
 

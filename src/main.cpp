@@ -4,13 +4,16 @@
 
 
 #include "core/Window.hpp"
-#include "math/vec4.hpp"
+#include "math/math.hpp"
+#include "graphics/Shader.hpp"
+#include "utils/FileUtils.hpp"
 
 
 int main() {
     using namespace Reiki;
     using namespace core;
     using namespace math;
+    using namespace graphics;
 
     Window window("Test", 800, 600);
 
@@ -23,6 +26,9 @@ int main() {
     vec4 c = a + b;
 
     std::cout << a << b << c << std::endl;
+    //std::string file = read_file(project_path("src/main.cpp"));
+    //std::cout << file << std::endl;
+    Shader shader(shader_path("test.vs.glsl"), shader_path("test.fs.glsl"));
 
     while (!window.shouldClose()) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
