@@ -1,7 +1,7 @@
 #version 330
 
 // Input attributes
-in vec3 in_position;
+layout(location = 0) in vec3 in_position;
 
 // Application data
 uniform mat3 transform;

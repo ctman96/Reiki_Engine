@@ -17,6 +17,7 @@ namespace Reiki::math {
         mat3(vec3 c0, vec3 c1, vec3 c2);
 
         static mat3 Identity();
+        static mat3 Orthographic(float left, float right, float bottom, float top);
         static mat3 Translation(vec2 offset);
         static mat3 Scale(vec2 scale);
         static mat3 Rotation(float radians);

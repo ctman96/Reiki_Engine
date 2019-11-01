@@ -1,6 +1,8 @@
-//
-// Created by Cody on 10/31/2019.
-//
+/*!
+ * @author: Cody Newman
+ *
+ * Created on 10/31/2019.
+ */
 
 #ifndef REIKI_SHADER_HPP
 #define REIKI_SHADER_HPP
@@ -30,6 +32,9 @@ namespace Reiki::graphics {
         void setUniformVec3(const GLchar* name, const math::vec3& vec);
         void setUniformVec4(const GLchar* name, const math::vec4& vec);
         void setUniformMat3(const GLchar* name, const math::mat3& mat);
+
+
+        GLint getAttributeLocation(const GLchar* name);
     };
 }
 

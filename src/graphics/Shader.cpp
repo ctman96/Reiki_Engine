@@ -1,6 +1,8 @@
-//
-// Created by Cody on 10/31/2019.
-//
+/*!
+ * @author: Cody Newman
+ *
+ * Created on 10/31/2019.
+ */
 
 #include "Shader.hpp"
 
@@ -106,5 +108,9 @@ namespace Reiki::graphics {
 
     void Shader::setUniformMat3(const GLchar *name, const math::mat3 &mat) {
         glUniformMatrix3fv(getUniformLocation(name), 1, GL_FALSE, (float*)&mat);
+    }
+
+    GLint Shader::getAttributeLocation(const GLchar *name) {
+        return glGetAttribLocation(m_program, name);
     }
 }

@@ -25,6 +25,15 @@ namespace Reiki::math {
         return mat3(1);
     }
 
+    mat3 mat3::Orthographic(float left, float right, float bottom, float top) {
+        float sx = 2.f / (right - left);
+        float sy = 2.f / (top - bottom);
+        float tx = -(right + left) / (right - left);
+        float ty = -(top + bottom) / (top - bottom);
+        mat3 O = { {sx, 0.f, 0.f}, {0.f, sy, 0.f}, {tx,ty,1.f}};
+        return O;
+    }
+
     mat3 mat3::Translation(vec2 offset) {
         mat3 T = { { 1.f, 0.f, 0.f },{ 0.f, 1.f, 0.f },{ offset.x, offset.y, 1.f }};
         return T;

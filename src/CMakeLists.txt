@@ -2,11 +2,18 @@
 set(REIKI_SOURCE_FILES
         core/Window.cpp core/Window.hpp
 
+        math/math.hpp
         math/vec2.cpp math/vec2.hpp
         math/vec3.cpp math/vec3.hpp
         math/vec4.cpp math/vec4.hpp
         math/mat3.cpp math/mat3.hpp
-        utils/FileUtils.hpp graphics/Shader.cpp graphics/Shader.hpp math/math.hpp)
+
+        utils/FileUtils.hpp
+        graphics/Shader.cpp graphics/Shader.hpp
+        graphics/VertexBuffer.cpp graphics/VertexBuffer.hpp
+        graphics/IndexBuffer.cpp graphics/IndexBuffer.hpp
+        graphics/VertexArray.cpp graphics/VertexArray.hpp
+        graphics/Vertex.hpp graphics/TexturedVertex.hpp)
 
 add_library(REIKI_CORE ${REIKI_SOURCE_FILES})
 # Include GLFW
