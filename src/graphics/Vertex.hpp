@@ -11,12 +11,12 @@ namespace Reiki::graphics {
     class Vertex {
     private:
         math::vec3 m_position;
-        math::vec3 m_color;
+        math::vec4 m_color;
     public:
-        Vertex(const math::vec3& position, const math::vec3& color) : m_position(position), m_color(color) {}
+        Vertex(const math::vec3& position, const math::vec4& color) : m_position(position), m_color(color) {}
 
         const math::vec3 &getPosition() const { return m_position; }
-        const math::vec3 &getColor() const { return m_color; }
+        const math::vec4 &getColor() const { return m_color; }
     };
 }
 

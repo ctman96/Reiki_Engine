@@ -42,8 +42,23 @@ namespace Reiki::graphics {
                 color.x, color.y, color.z, color.w,
                 color.x, color.y, color.z, color.w,
             };
-            m_vertexArray->addBuffer(new VertexBuffer(vertices, 4*3,3),0);
-            m_vertexArray->addBuffer(new VertexBuffer(vertices, 4*4,4),1);
+
+            Vertex vertices1[] = {
+                    {{0,0,0}, {color.x, color.y, color.z, color.w}},
+                    {{0,scale.y,0}, {color.x, color.y, color.z, color.w}},
+                    {{scale.x, scale.y,0}, {color.x, color.y, color.z, color.w}},
+                    {{scale.x,0,0}, {color.x, color.y, color.z, color.w}},
+            };
+
+            VertexLayout layout;
+            layout.addVertex(GL_FALSE);
+
+            auto *vbo = new VertexBuffer(vertices1, 4);
+            vbo->setLayout(layout);
+            m_vertexArray->addBuffer(vbo,0);
+
+            //m_vertexArray->addBuffer(new VertexBuffer(vertices, 4*3,3),0);
+            //m_vertexArray->addBuffer(new VertexBuffer(vertices, 4*4,4),1);
 
             GLuint indices[] = {0,1,2,2,3,0};
             m_indexBuffer = new IndexBuffer(indices, 6);

@@ -21,7 +21,8 @@ set(REIKI_SOURCE_FILES
         graphics/Vertex.hpp graphics/TexturedVertex.hpp
         graphics/Renderable.hpp
         graphics/Renderer.hpp
-        graphics/SimpleRenderer.cpp graphics/SimpleRenderer.hpp)
+        graphics/SimpleRenderer.cpp graphics/SimpleRenderer.hpp
+        graphics/VertexAttribute.cpp graphics/VertexAttribute.hpp graphics/VertexLayout.cpp graphics/VertexLayout.hpp)
 
 add_library(REIKI_CORE ${REIKI_SOURCE_FILES})
 # Include GLFW

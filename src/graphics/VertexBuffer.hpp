@@ -8,16 +8,18 @@
 #define REIKI_BUFFER_HPP
 
 #include <glad/glad.h>
+#include "VertexLayout.hpp"
 
 namespace Reiki::graphics {
     class VertexBuffer {
     private:
         GLuint m_id;
-        GLsizei m_components;
+        VertexLayout m_layout;
     public:
-        VertexBuffer(const GLfloat * data, GLsizei size, GLsizei count);
+        VertexBuffer(const GLfloat * data, GLsizei size);
+        VertexBuffer(const Vertex * data, GLsizei size);
 
-        inline GLsizei getCount() const { return m_components; };
+        void setLayout(const VertexLayout &layout);
 
         void bind() const;
         void unbind() const;

@@ -20,8 +20,8 @@ namespace Reiki::graphics {
         // TODO change this whole thing
         bind();
         buffer->bind();
-        glEnableVertexAttribArray(index);
-        glVertexAttribPointer(index, buffer->getCount(), GL_FLOAT, GL_FALSE, 0,0);
+        //glEnableVertexAttribArray(index);
+        //glVertexAttribPointer(index, buffer->getCount(), GL_FLOAT, GL_FALSE, 0,0);
 
         buffer->unbind();
         unbind();
