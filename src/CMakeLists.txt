@@ -8,6 +8,11 @@ set(REIKI_SOURCE_FILES
         math/vec4.cpp math/vec4.hpp
         math/mat3.cpp math/mat3.hpp
 
+        ecs/ECS.hpp
+        ecs/Component.hpp
+        ecs/Entity.hpp ecs/EntityManager.hpp
+        ecs/System.hpp ecs/SystemManager.hpp
+
         utils/FileUtils.hpp
         graphics/Shader.cpp graphics/Shader.hpp
         graphics/VertexBuffer.cpp graphics/VertexBuffer.hpp
