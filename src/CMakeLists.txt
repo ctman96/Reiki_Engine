@@ -13,7 +13,10 @@ set(REIKI_SOURCE_FILES
         graphics/VertexBuffer.cpp graphics/VertexBuffer.hpp
         graphics/IndexBuffer.cpp graphics/IndexBuffer.hpp
         graphics/VertexArray.cpp graphics/VertexArray.hpp
-        graphics/Vertex.hpp graphics/TexturedVertex.hpp)
+        graphics/Vertex.hpp graphics/TexturedVertex.hpp
+        graphics/Renderable.hpp
+        graphics/Renderer.hpp
+        graphics/SimpleRenderer.cpp graphics/SimpleRenderer.hpp)
 
 add_library(REIKI_CORE ${REIKI_SOURCE_FILES})
 # Include GLFW
