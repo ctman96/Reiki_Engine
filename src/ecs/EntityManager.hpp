@@ -17,7 +17,7 @@ namespace Reiki::ECS {
 
     public:
         void update(float ms);
-        void draw(const math::mat3& projection);
+        //void draw(const math::mat3& projection);
 
         template <typename T, typename... TArgs> T& addEntity();
 

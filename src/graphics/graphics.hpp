@@ -10,6 +10,7 @@
 #include "Renderer.hpp"
 #include "Shader.hpp"
 #include "SimpleRenderer.hpp"
+#include "Texture.hpp"
 #include "TexturedVertex.hpp"
 #include "Vertex.hpp"
 #include "VertexArray.hpp"

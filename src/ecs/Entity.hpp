@@ -41,7 +41,7 @@ namespace Reiki::ECS {
         EntityId getId() const { return id; }
 
         virtual void update(float ms) {};
-        virtual void draw(const math::mat3& projection) {};
+        // virtual void draw(const math::mat3& projection) {};
         virtual void destroy() { active = false; };
 
         bool isActive() const { return active; };

@@ -12,6 +12,7 @@
 
 #define project_path(name) PROJECT_SOURCE_DIR "./" name
 #define shader_path(name) PROJECT_SOURCE_DIR "./src/shaders/" name
+#define texture_path(name) PROJECT_SOURCE_DIR "./src/textures/" name
 
 namespace Reiki {
 

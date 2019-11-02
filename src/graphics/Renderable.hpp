@@ -11,6 +11,7 @@
 #include "VertexBuffer.hpp"
 #include "IndexBuffer.hpp"
 #include "Shader.hpp"
+#include "Texture.hpp"
 
 
 namespace Reiki::graphics {
@@ -22,56 +23,20 @@ namespace Reiki::graphics {
         float m_rotation;
         math::vec4 m_color;
 
-        Shader& m_shader;
+        Shader* m_shader;
+        Texture* m_texture;
         VertexArray* m_vertexArray;
         IndexBuffer* m_indexBuffer;
 
     public:
-        Renderable(math::vec2 position, math::vec2 scale, float rotation, math::vec4 color, Shader& shader)
-                : m_position(position), m_scale(scale), m_rotation(rotation), m_color(color), m_shader(shader) {
-            m_vertexArray = new VertexArray();
-            GLfloat vertices[] = {
-                    0,0,0,
-                    0,scale.y,0,
-                    scale.x, scale.y,0,
-                    scale.x,0,0
-            };
-            GLfloat colors[] = {
-                color.x, color.y, color.z, color.w,
-                color.x, color.y, color.z, color.w,
-                color.x, color.y, color.z, color.w,
-                color.x, color.y, color.z, color.w,
-            };
+        Renderable(math::vec2 position, math::vec2 scale, float rotation, math::vec4 color, Texture* texture, Shader* shader);
 
-            Vertex vertices1[] = {
-                    {{0,0,0}, {color.x, color.y, color.z, color.w}},
-                    {{0,scale.y,0}, {color.x, color.y, color.z, color.w}},
-                    {{scale.x, scale.y,0}, {color.x, color.y, color.z, color.w}},
-                    {{scale.x,0,0}, {color.x, color.y, color.z, color.w}},
-            };
-
-            VertexLayout layout;
-            layout.addVertex(GL_FALSE);
-
-            auto *vbo = new VertexBuffer(vertices1, 4);
-            vbo->setLayout(layout);
-            m_vertexArray->addBuffer(vbo,0);
-
-            //m_vertexArray->addBuffer(new VertexBuffer(vertices, 4*3,3),0);
-            //m_vertexArray->addBuffer(new VertexBuffer(vertices, 4*4,4),1);
-
-            GLuint indices[] = {0,1,2,2,3,0};
-            m_indexBuffer = new IndexBuffer(indices, 6);
-        }
-
-        virtual ~Renderable() {
-            delete m_vertexArray;
-            delete m_indexBuffer;
-        }
+        virtual ~Renderable();
 
         inline const VertexArray* getVertexArray() const { return m_vertexArray; }
         inline const IndexBuffer* getIndexBuffer() const { return m_indexBuffer; }
-        inline Shader& getShader() const { return m_shader; };
+        inline const Shader* getShader() const { return m_shader; };
+        inline const Texture* getTexture() const { return m_texture; };
 
         inline const math::vec2 &getPosition() const { return m_position; }
 

@@ -38,8 +38,11 @@ int main() {
     shader.setUniformMat3("projection", mat3::Orthographic(0.f, 16.f, 0.f, 9.f));
     //shader.setUniformVec4("color", vec4(0.2f,0.3f,0.8f,1.f));
 
-    Renderable sprite({5.f,5.f}, {4.f,4.f}, 0.f, {1,0,1,1}, shader);
-    Renderable sprite2({7.f,1.f}, {2.f,3.f}, 0.f, {0.2f,0,1,1}, shader);
+    Texture t1(texture_path("turtle.png"));
+    Texture t2(texture_path("fish.png"));
+
+    Renderable sprite({5.f,5.f}, {4.f,4.f}, 0.f, {1,0,1,1}, &t1, &shader);
+    Renderable sprite2({7.f,1.f}, {2.f,3.f}, 0.f, {0.2f,0,1,1}, &t2, &shader);
     SimpleRenderer renderer;
 
     while (!window.shouldClose()) {
