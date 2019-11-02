@@ -58,6 +58,10 @@ int main() {
         if (window.isButtonPressed(GLFW_MOUSE_BUTTON_LEFT)) {
             std::cout << "LMB PRESSED: " << window.getMousePosition().x << "," << window.getMousePosition().y << std::endl;
         }
+        // sprite2.setPosition(sprite2.getPosition() + vec2(0.5,0.f));
+        // sprite2.setRotation(sprite2.getRotation() + 0.001f);
+        // sprite2.setScale(sprite2.getScale() + vec2(0.001,0));
+        // sprite2.setColor(sprite2.getColor() + vec4(0.0001,0,0,0));
 
         renderer.submit(&sprite);
         renderer.submit(&sprite2);

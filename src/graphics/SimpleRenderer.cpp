@@ -23,8 +23,9 @@ namespace Reiki::graphics {
             shader->use();
 
             math::mat3 transformation = math::mat3::Translation(renderable->getPosition())
-                                        * math::mat3::Rotation(renderable->getRotation());
-            //* math::mat3::Scale(renderable->getScale());
+                                        * math::mat3::Rotation(renderable->getRotation())
+                                        * math::mat3::Scale(renderable->getScale());
+
 
             shader->setUniformMat3("projection", math::mat3::Orthographic(0.f, 800.f, 600.f, 0.f ));
             shader->setUniformMat3("transform",transformation);
