@@ -78,7 +78,7 @@ namespace Reiki::graphics {
         glUseProgram(m_program);
     }
 
-    void Shader::clear() {
+    void Shader::clear() const{
         glUseProgram(0);
     }
 

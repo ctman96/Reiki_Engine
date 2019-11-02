@@ -23,7 +23,7 @@ namespace Reiki::graphics {
         ~Shader();
 
         void use() const;
-        static void clear();
+        void clear() const;
 
         GLint getUniformLocation(const GLchar* name) const;
         void setUniformFloat(const GLchar* name, float val) const;

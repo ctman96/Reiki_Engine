@@ -28,8 +28,10 @@ namespace Reiki::graphics {
         VertexArray* m_vertexArray;
         IndexBuffer* m_indexBuffer;
 
+        Renderable();
     public:
-        Renderable(math::vec2 position, math::vec2 scale, float rotation, math::vec4 color, Texture* texture, Shader* shader);
+        Renderable(math::vec2 position, math::vec2 scale, float rotation, math::vec4 color, Shader* shader);
+        Renderable(const math::vec2 &position, const math::vec2 &scale, float rotation, const math::vec4 &color, Texture *texture, Shader *shader);
 
         virtual ~Renderable();
 

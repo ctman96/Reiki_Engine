@@ -9,6 +9,7 @@
 
 #include <glad/glad.h>
 #include "VertexLayout.hpp"
+#include "TexturedVertex.hpp"
 
 namespace Reiki::graphics {
     class VertexBuffer {
@@ -18,6 +19,7 @@ namespace Reiki::graphics {
     public:
         VertexBuffer(const GLfloat * data, GLsizei size);
         VertexBuffer(const Vertex * data, GLsizei size);
+        VertexBuffer(const TexturedVertex* data, GLsizei size);
 
         void setLayout(const VertexLayout &layout);
 
