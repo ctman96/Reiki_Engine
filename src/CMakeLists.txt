@@ -10,10 +10,14 @@ set(REIKI_SOURCE_FILES
 
         ecs/ECS.hpp
         ecs/Component.hpp
-        ecs/Entity.hpp ecs/EntityManager.hpp
-        ecs/System.hpp ecs/SystemManager.hpp
+        ecs/Entity.cpp ecs/Entity.hpp
+        ecs/EntityManager.cpp ecs/EntityManager.hpp
+        ecs/System.hpp
+        ecs/SystemManager.cpp ecs/SystemManager.hpp
 
         utils/FileUtils.hpp
+
+        graphics/graphics.hpp
         graphics/Shader.cpp graphics/Shader.hpp
         graphics/VertexBuffer.cpp graphics/VertexBuffer.hpp
         graphics/IndexBuffer.cpp graphics/IndexBuffer.hpp
@@ -22,7 +26,8 @@ set(REIKI_SOURCE_FILES
         graphics/Renderable.hpp
         graphics/Renderer.hpp
         graphics/SimpleRenderer.cpp graphics/SimpleRenderer.hpp
-        graphics/VertexAttribute.cpp graphics/VertexAttribute.hpp graphics/VertexLayout.cpp graphics/VertexLayout.hpp)
+        graphics/VertexAttribute.cpp graphics/VertexAttribute.hpp
+        graphics/VertexLayout.cpp graphics/VertexLayout.hpp)
 
 add_library(REIKI_CORE ${REIKI_SOURCE_FILES})
 # Include GLFW

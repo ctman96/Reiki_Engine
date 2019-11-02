@@ -11,6 +11,7 @@
 #include "utils/FileUtils.hpp"
 #include "graphics/Renderable.hpp"
 #include "graphics/SimpleRenderer.hpp"
+#include "ecs/ECS.hpp"
 
 
 

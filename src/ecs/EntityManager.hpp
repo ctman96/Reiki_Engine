@@ -7,50 +7,28 @@
 
 #include <unordered_map>
 #include "Entity.hpp"
+#include "../math/math.hpp"
 
 namespace Reiki::ECS {
-    template<typename T, typename... Args>
-    std::unique_ptr<T> make_unique(Args&&... args) {
-        return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
-    }
-
     class EntityManager {
     private:
         EntityId idCounter;
         std::unordered_map<EntityId, std::unique_ptr<Entity>> entities;
 
     public:
-        void update(float ms) {
-            for (auto & e : entities) {
-                e.second->update(ms);
-            }
-        }
+        void update(float ms);
+        void draw(const math::mat3& projection);
 
-        void draw(const mat3& projection) {
-            for (auto & e : entities) e.second->draw(projection);
-        }
+        template <typename T, typename... TArgs> T& addEntity();
 
-        template <typename T, typename... TArgs> T& addEntity() {
-            auto id = idCounter;
-            ++idCounter;
+        template <typename T> T& getEntity(EntityId id) { return *(entities[id]); }
 
-            T* e(new T(id));
-            std::unique_ptr<Entity> uPtr{ e };
-            entities.emplace(id, std::move(uPtr));
-            return *e;
-        }
+        void removeEntity(EntityId id) { entities.erase(id); }
 
-        template <typename T> T& getEntity(EntityId id) {
-            return entities[id];
-        }
+        // TODO getter to just get ones with specific components?
+        std::unordered_map<EntityId, std::unique_ptr<Entity>> * getEntities() { return &entities; }
 
-        void removeEntity(EntityId id) {
-            entities.erase(id);
-        }
-
-        std::unordered_map<EntityId, std::unique_ptr<Entity>> * getEntities() {
-            return &entities;
-        }
+        void clear() { entities.clear(); }
     };
 }
 
