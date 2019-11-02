@@ -21,6 +21,13 @@ namespace Reiki::graphics {
         unbind();
     }
 
+    VertexBuffer::VertexBuffer(const TexturedVertex *data, GLsizei size) {
+        glGenBuffers(1, &m_id);
+        bind();
+        glBufferData(GL_ARRAY_BUFFER, sizeof(TexturedVertex) * size, data, GL_STATIC_DRAW);
+        unbind();
+    }
+
     void VertexBuffer::setLayout(const VertexLayout &layout) {
         m_layout = layout;
         m_layout.enable();

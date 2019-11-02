@@ -18,9 +18,9 @@ namespace Reiki::ECS {
         }
     }
 
-    void EntityManager::draw(const math::mat3 &projection) {
-        for (auto & e : entities) e.second->draw(projection);
-    }
+//    void EntityManager::draw(const math::mat3 &projection) {
+//        for (auto & e : entities) e.second->draw(projection);
+//    }
 
     template<typename T, typename... TArgs>
     T &EntityManager::addEntity() {

@@ -23,13 +23,16 @@ set(REIKI_SOURCE_FILES
         graphics/IndexBuffer.cpp graphics/IndexBuffer.hpp
         graphics/VertexArray.cpp graphics/VertexArray.hpp
         graphics/Vertex.hpp graphics/TexturedVertex.hpp
-        graphics/Renderable.hpp
-        graphics/Renderer.hpp
         graphics/SimpleRenderer.cpp graphics/SimpleRenderer.hpp
         graphics/VertexAttribute.cpp graphics/VertexAttribute.hpp
-        graphics/VertexLayout.cpp graphics/VertexLayout.hpp)
+        graphics/VertexLayout.cpp graphics/VertexLayout.hpp
+        graphics/Texture.cpp graphics/Texture.hpp
+        graphics/Renderable.cpp graphics/Renderable.hpp
+        graphics/Renderer.hpp)
 
 add_library(REIKI_CORE ${REIKI_SOURCE_FILES})
+# Include stb_image
+target_include_directories(REIKI_CORE PRIVATE ${PROJECT_SOURCE_DIR}/libs/stb_image)
 # Include GLFW
 target_include_directories(REIKI_CORE PRIVATE ${GLFW_INCLUDE_DIRS})
 # Include Glad

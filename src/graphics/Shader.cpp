@@ -78,39 +78,39 @@ namespace Reiki::graphics {
         glUseProgram(m_program);
     }
 
-    void Shader::clear() {
+    void Shader::clear() const{
         glUseProgram(0);
     }
 
-    GLint Shader::getUniformLocation(const GLchar *name) {
+    GLint Shader::getUniformLocation(const GLchar *name) const{
         return glGetUniformLocation(m_program, name);
     }
 
-    void Shader::setUniformFloat(const GLchar *name, float val) {
+    void Shader::setUniformFloat(const GLchar *name, float val) const{
         glUniform1f(getUniformLocation(name), val);
     }
 
-    void Shader::setUniformInt(const GLchar *name, int val) {
+    void Shader::setUniformInt(const GLchar *name, int val) const{
         glUniform1i(getUniformLocation(name), val);
     }
 
-    void Shader::setUniformVec2(const GLchar *name, const math::vec2 &vec) {
+    void Shader::setUniformVec2(const GLchar *name, const math::vec2 &vec) const{
         glUniform2f(getUniformLocation(name), vec.x, vec.y);
     }
 
-    void Shader::setUniformVec3(const GLchar *name, const math::vec3 &vec) {
+    void Shader::setUniformVec3(const GLchar *name, const math::vec3 &vec) const{
         glUniform3f(getUniformLocation(name), vec.x, vec.y, vec.z);
     }
 
-    void Shader::setUniformVec4(const GLchar *name, const math::vec4 &vec) {
+    void Shader::setUniformVec4(const GLchar *name, const math::vec4 &vec) const{
         glUniform4f(getUniformLocation(name), vec.x, vec.y, vec.z, vec.w);
     }
 
-    void Shader::setUniformMat3(const GLchar *name, const math::mat3 &mat) {
+    void Shader::setUniformMat3(const GLchar *name, const math::mat3 &mat) const{
         glUniformMatrix3fv(getUniformLocation(name), 1, GL_FALSE, (float*)&mat);
     }
 
-    GLint Shader::getAttributeLocation(const GLchar *name) {
+    GLint Shader::getAttributeLocation(const GLchar *name) const{
         return glGetAttribLocation(m_program, name);
     }
 }
