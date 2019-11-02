@@ -40,8 +40,12 @@ namespace Reiki::graphics {
         layout.addVertex(GL_FALSE);
 
         auto *vbo = new VertexBuffer(vertices1, 4);
+        m_vertexArray->bind();
+        vbo->bind();
         vbo->setLayout(layout);
-        m_vertexArray->addBuffer(vbo,0);
+        vbo->unbind();
+        m_vertexArray->unbind();
+        //m_vertexArray->addBuffer(vbo,0); TODO idk what I'm doing with this
 
         //m_vertexArray->addBuffer(new VertexBuffer(vertices, 4*3,3),0);
         //m_vertexArray->addBuffer(new VertexBuffer(vertices, 4*4,4),1);
@@ -69,8 +73,12 @@ namespace Reiki::graphics {
         layout.addTexturedVertex(GL_FALSE);
 
         auto *vbo = new VertexBuffer(vertices, 4);
+        m_vertexArray->bind();
+        vbo->bind();
         vbo->setLayout(layout);
-        m_vertexArray->addBuffer(vbo,0);
+        vbo->unbind();
+        m_vertexArray->unbind();
+        //m_vertexArray->addBuffer(vbo,0); TODO idk what I'm doing with this
 
         GLuint indices[] = {0,1,2,2,3,0};
         m_indexBuffer = new IndexBuffer(indices, 6);
