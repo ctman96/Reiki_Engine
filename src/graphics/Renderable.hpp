@@ -41,12 +41,16 @@ namespace Reiki::graphics {
         inline const Texture* getTexture() const { return m_texture; };
 
         inline const math::vec2 &getPosition() const { return m_position; }
+        inline void setPosition(math::vec2 position) { m_position = position;};
 
         inline const math::vec2 &getScale() const { return m_scale; }
+        inline void setScale(math::vec2 scale) { m_scale = scale; };
 
-        inline float getRotation() const { return m_rotation; }
+        inline float getRotation() const { return m_rotation; };
+        inline void setRotation(float rotation) { m_rotation = rotation; };
 
         inline const math::vec4 &getColor() const { return m_color; }
+        inline void setColor(math::vec4 color) { m_color = color; };
     };
 }
 

@@ -45,6 +45,13 @@ Reiki::core::Window::Window(const char* title, int width, int height) : m_title(
     if(!glfwInit())
         throw std::runtime_error("Failed to initialize GLFW!");
 
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, 1);
+#if __APPLE__
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#endif
     m_window = glfwCreateWindow(m_width, m_height, m_title, nullptr, nullptr);
     if (!m_window) {
         throw std::runtime_error("Failed to create GLFW window!");
@@ -78,10 +85,13 @@ Reiki::core::Window::Window(const char* title, int width, int height) : m_title(
     printf("OpenGL %d.%d\n", GLVersion.major, GLVersion.minor);
 
     // Enable the debug callback
+#if __APPLE__
+#else
     glEnable(GL_DEBUG_OUTPUT);
     glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
     glDebugMessageCallback(openglCallbackFunction, nullptr);
     glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, true);
+#endif
 }
 
 Reiki::core::Window::~Window() {

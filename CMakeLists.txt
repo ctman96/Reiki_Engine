@@ -59,6 +59,11 @@ elseif(IS_OS_LINUX OR IS_OS_MAC)
     endif()
 endif()
 
+if (IS_OS_MAC)
+    include_directories(/usr/local/include)
+    link_directories(/usr/local/lib)
+endif()
+
 ## Get Glad
 add_library(GLAD ${PROJECT_SOURCE_DIR}/libs/GLAD/glad.c)
 target_include_directories(GLAD PRIVATE ${PROJECT_SOURCE_DIR}/libs/GLAD)
