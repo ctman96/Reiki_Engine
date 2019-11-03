@@ -8,14 +8,20 @@
 #include <deque>
 #include "Renderer.hpp"
 #include "../math/math.hpp"
+#include "FrameBuffer.hpp"
 
 namespace Reiki::graphics {
     class SimpleRenderer : public Renderer {
     private:
         std::deque<const Renderable*> m_renderQueue;
+        FrameBuffer* m_frameBuffer;
+        math::vec2 m_size;
     public:
-        void submit(const Renderable* renderable);
-        void render();
+        explicit SimpleRenderer(const math::vec2 &size);
+        ~SimpleRenderer();
+
+        void submit(const Renderable* renderable) override;
+        void render() override;
     };
 }
 

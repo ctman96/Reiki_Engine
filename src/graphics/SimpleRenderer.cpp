@@ -5,11 +5,23 @@
 #include "SimpleRenderer.hpp"
 
 namespace Reiki::graphics {
+    SimpleRenderer::SimpleRenderer(const math::vec2 &size) : m_size(m_size) {
+        m_frameBuffer = new FrameBuffer(static_cast<GLsizei>(size.x), static_cast<GLsizei>(size.y));
+    }
+
+    SimpleRenderer::~SimpleRenderer() {
+        delete m_frameBuffer;
+    }
+
     void SimpleRenderer::submit(const Renderable *renderable) {
         m_renderQueue.push_back(renderable);
     }
 
     void SimpleRenderer::render() {
+        // TODO: generate new framebuffer if screen size changes?
+        m_frameBuffer->bind();
+        m_frameBuffer->clear();
+        m_frameBuffer->bindTexture(); // TODO??
         while(!m_renderQueue.empty()){
             const Renderable* renderable = m_renderQueue.front();
             renderable->getVertexArray()->bind();
@@ -40,5 +52,7 @@ namespace Reiki::graphics {
 
             m_renderQueue.pop_front();
         }
+        //m_frameBuffer->unbindTexture(); TODO?
+        //m_frameBuffer->unbind();
     }
 }

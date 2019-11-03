@@ -9,6 +9,18 @@
 #include "stb_image.h"
 
 namespace Reiki::graphics {
+    Texture::Texture(GLsizei width, GLsizei height)
+            : m_width(width), m_height(height) {
+
+        glGenTextures(1, &m_id);
+        glBindTexture(GL_TEXTURE_2D, m_id);
+
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+    }
+
     Texture::Texture(const char *path) {
         if (path == nullptr) {
             std::string error =  "Unable to load texture: ";
@@ -29,7 +41,7 @@ namespace Reiki::graphics {
     }
 
     Texture::~Texture() {
-        glDeleteTextures(1, &m_id);
+        if (m_id != 0) glDeleteTextures(1, &m_id);
     }
 
     void Texture::bind() const {

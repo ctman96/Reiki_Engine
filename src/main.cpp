@@ -34,8 +34,6 @@ int main() {
 
     Shader shader(shader_path("test.vs.glsl"), shader_path("test.fs.glsl"));
     Shader shader1(shader_path("test_textured.vs.glsl"), shader_path("test_textured.fs.glsl"));
-    shader.clear();
-    shader1.clear();
     //shader.use();
     //shader.setUniformMat3("transform", mat3::Translation(vec2(4,3)));
     //shader.setUniformMat3("projection", mat3::Orthographic(0.f, 16.f, 0.f, 9.f));
@@ -46,10 +44,10 @@ int main() {
 
     Renderable sprite({5.f,5.f}, {40.f,40.f}, 0.f, {1,0,1,1}, &shader);
     Renderable sprite2({100.f,200.f}, {1,1}, 0.f, {1,1,1,1}, &t2, &shader1);
-    SimpleRenderer renderer;
+    SimpleRenderer renderer(vec2(800,600));
 
     while (!window.shouldClose()) {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         if (window.isKeyPressed(GLFW_KEY_A)) {
             std::cout << "A PRESSED" << std::endl;
