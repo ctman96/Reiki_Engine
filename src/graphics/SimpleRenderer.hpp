@@ -22,6 +22,8 @@ namespace Reiki::graphics {
 
         void submit(const Renderable* renderable) override;
         void render() override;
+    private:
+        void render(const Renderable* renderable);
     };
 }
 

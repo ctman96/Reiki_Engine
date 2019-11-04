@@ -29,10 +29,38 @@ namespace Reiki::graphics {
         if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
             throw std::runtime_error("Failed to create Framebuffer");
         }
+
+        m_vao = new VertexArray();
+
+        float w = width;
+        float h = height;
+        TexturedVertex vertices[] = {
+                {{0, 0, 0}, {0,1}},
+                {{w, 0, 0}, {0,0}},
+                {{w, h, 0}, {1,0}},
+                {{0, h, 0}, {1,1}}
+        };
+        VertexLayout layout;
+        layout.addTexturedVertex(GL_FALSE);
+        auto *vbo = new VertexBuffer(vertices, 4);
+        m_vao->bind();
+        vbo->bind();
+        vbo->setLayout(layout);
+        vbo->unbind();
+        m_vao->unbind();
+        //m_vertexArray->addBuffer(vbo,0); TODO idk what I'm doing with this
+
+        GLuint indices[] = {0,1,2,2,3,0};
+        m_ibo = new IndexBuffer(indices, 6);
+
+        m_shader = new Shader(shader_path("test_textured.vs.glsl"), shader_path("test_textured.fs.glsl")); // TODO
     }
 
     FrameBuffer::~FrameBuffer() {
         if (m_frameBufferId != 0) glDeleteFramebuffers(1, &m_frameBufferId);
+        delete m_texture;
+        delete m_vao;
+        delete m_ibo;
     }
 
 
@@ -50,5 +78,19 @@ namespace Reiki::graphics {
         glClearColor(m_clear.x, m_clear.y, m_clear.z, m_clear.w);
         glClearDepth(1.f);// todo depth?
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    }
+
+    void FrameBuffer::bindTexture() const {
+        m_texture->bind();
+        m_shader->use();
+        m_vao->bind();
+        m_ibo->bind();
+    }
+
+    void FrameBuffer::unbindTexture() const {
+        m_ibo->unbind();
+        m_vao->unbind();
+        m_shader->clear();
+        m_texture->unbind();
     }
 }
