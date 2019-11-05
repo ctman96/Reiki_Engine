@@ -10,7 +10,7 @@ set(REIKI_SOURCE_FILES
 
         ecs/ECS.hpp
         ecs/Component.hpp
-        ecs/Entity.cpp ecs/Entity.hpp
+        ecs/Entity.hpp
         ecs/EntityManager.cpp ecs/EntityManager.hpp
         ecs/System.hpp
         ecs/SystemManager.cpp ecs/SystemManager.hpp

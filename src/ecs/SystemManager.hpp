@@ -33,11 +33,31 @@ namespace Reiki::ECS {
 
         void refresh();
 
-        template <typename T> bool hasSystem() const;
+        template <typename T> bool hasSystem() const {
+            return systemBitSet[getSystemTypeId<T>()];
+        };
 
-        template<typename T> T& getSystem();
+        template<typename T> T& getSystem() {
+            if (hasSystem<T>()) {
+                auto ptr(systemArray[getSystemTypeId<T>()]);
+                return *static_cast<T *>(ptr);
+            } else return addSystem<T>(); // TODO?
+        };
 
-        template <typename T, typename... TArgs> T& addSystem(TArgs&&... mArgs);
+        template <typename T, typename... TArgs> T& addSystem(TArgs&&... mArgs) {
+            if (!hasSystem<T>()){
+                T *system(new T(std::forward<TArgs>(mArgs)...));
+                SystemId id = getSystemTypeId<T>();
+                system->id = id;
+                std::unique_ptr<System> uPtr{system};
+                systems.emplace_back((std::move(uPtr)));
+
+                systemArray[id] = system;
+                systemBitSet[id] = true;
+
+                return *system;
+            } else return getSystem<T>();
+        };
 
         void reset();
     };

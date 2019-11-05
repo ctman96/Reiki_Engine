@@ -25,7 +25,7 @@ namespace Reiki::ECS {
 
 
     class Entity {
-    friend class EntityManager;
+        friend class EntityManager;
     private:
         EntityId id;
         bool active = true;
@@ -34,21 +34,37 @@ namespace Reiki::ECS {
 
         ComponentArray componentArray{}; // Components indexed by typeId
         ComponentBitSet componentBitSet; // Quick True/False lookup for if has component;
-
-        explicit Entity(EntityId id)
-                : id(id) {}
     public:
         EntityId getId() const { return id; }
 
         virtual void update(float ms) {};
-        // virtual void draw(const math::mat3& projection) {};
+        virtual void draw(const math::mat3& projection) {};
         virtual void destroy() { active = false; };
 
         bool isActive() const { return active; };
 
-        template <typename T> bool hasComponent() const;
-        template <typename T, typename... TArgs> T* addComponent(TArgs&&... mArgs);
-        template<typename T> T* getComponent() const;
+        template <typename T> bool hasComponent() const {
+            return componentBitSet[getComponentTypeId<T>()];
+        };
+
+        template <typename T, typename... TArgs> T* addComponent(TArgs&&... mArgs) {
+            T* component(new T(std::forward<TArgs>(mArgs)...));
+            component->entity = this;
+            std::unique_ptr<Component> uPtr{ component };
+            components.emplace_back((std::move(uPtr)));
+
+            componentArray[getComponentTypeId<T>()] = component;
+            componentBitSet[getComponentTypeId<T>()] = true;
+
+            component->init();
+
+            return component;
+        };
+
+        template<typename T> T* getComponent() const {
+            auto ptr(componentArray[getComponentTypeId<T>()]);
+            return static_cast<T*>(ptr);
+        };
     };
 }
 
