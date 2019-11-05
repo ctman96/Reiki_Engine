@@ -27,8 +27,6 @@ namespace Reiki::ECS {
     private:
         SystemId id;
         bool active = true;
-        explicit System(SystemId id)
-        : id(id) {}
     public:
         SystemId getId() const { return id; }
 
