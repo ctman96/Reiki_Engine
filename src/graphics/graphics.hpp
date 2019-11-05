@@ -5,6 +5,7 @@
 #ifndef REIKI_GRAPHICS_HPP
 #define REIKI_GRAPHICS_HPP
 
+#include "FrameBuffer.hpp"
 #include "IndexBuffer.hpp"
 #include "Renderable.hpp"
 #include "Renderer.hpp"

@@ -28,7 +28,7 @@ set(REIKI_SOURCE_FILES
         graphics/VertexLayout.cpp graphics/VertexLayout.hpp
         graphics/Texture.cpp graphics/Texture.hpp
         graphics/Renderable.cpp graphics/Renderable.hpp
-        graphics/Renderer.hpp)
+        graphics/Renderer.hpp graphics/FrameBuffer.cpp graphics/FrameBuffer.hpp)
 
 add_library(REIKI_CORE ${REIKI_SOURCE_FILES})
 # Include stb_image
