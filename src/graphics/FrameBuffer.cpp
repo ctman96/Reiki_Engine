@@ -5,25 +5,23 @@
 #include "FrameBuffer.hpp"
 
 namespace Reiki::graphics {
+    // TODO: Adjust for retina displays
     FrameBuffer::FrameBuffer(GLsizei width, GLsizei height)
             : m_width(width), m_height(height) {
-        m_clear = math::vec4(0,0,0,1);
+        m_clear = math::vec4(0.1f,0.1f,0.1f,1.f);
         glGenFramebuffers(1, &m_frameBufferId);
         glGenRenderbuffers(1, &m_depthBufferId);
 
         glBindFramebuffer(GL_FRAMEBUFFER, m_frameBufferId);
         glBindRenderbuffer(GL_RENDERBUFFER, m_depthBufferId);
 
-        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width, height);
-        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, m_depthBufferId);
-
         m_texture = new Texture(width, height);
         glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_texture->getId(), 0);
 
-        // Set the list of draw buffers TODO is this necessary? Copied from 427 template,
-        GLenum draw_buffers[1] = {GL_COLOR_ATTACHMENT0};
-        glDrawBuffers(1, draw_buffers); // "1" is the size of DrawBuffers
+        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width, height);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, m_depthBufferId);
 
+        glBindRenderbuffer(GL_RENDERBUFFER, 0);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
         if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
@@ -35,10 +33,10 @@ namespace Reiki::graphics {
         float w = width;
         float h = height;
         TexturedVertex vertices[] = {
-                {{0, 0, 0}, {0,1}},
-                {{w, 0, 0}, {0,0}},
-                {{w, h, 0}, {1,0}},
-                {{0, h, 0}, {1,1}}
+                {{-1, 1, 0}, {0,1}},
+                {{-1, -1, 0}, {0,0}},
+                {{1, -1, 0}, {1,0}},
+                {{1, 1, 0}, {1,1}}
         };
         VertexLayout layout;
         layout.addTexturedVertex(GL_FALSE);
@@ -53,11 +51,12 @@ namespace Reiki::graphics {
         GLuint indices[] = {0,1,2,2,3,0};
         m_ibo = new IndexBuffer(indices, 6);
 
-        m_shader = new Shader(shader_path("test_textured.vs.glsl"), shader_path("test_textured.fs.glsl")); // TODO
+        m_shader = new Shader(shader_path("test_framebuffer.vs.glsl"), shader_path("test_framebuffer.fs.glsl")); // TODO
     }
 
     FrameBuffer::~FrameBuffer() {
         if (m_frameBufferId != 0) glDeleteFramebuffers(1, &m_frameBufferId);
+        if (m_depthBufferId != 0) glDeleteRenderbuffers(1, &m_depthBufferId);
         delete m_texture;
         delete m_vao;
         delete m_ibo;
@@ -67,7 +66,7 @@ namespace Reiki::graphics {
     void FrameBuffer::bind() const {
         glBindFramebuffer(GL_FRAMEBUFFER, m_frameBufferId);
         glViewport(0, 0, m_width, m_height);
-        glDepthRange(0.00001, 10);// TODO depth?
+        //glDepthRange(0.00001, 10);// TODO depth?
     }
 
     void FrameBuffer::unbind() const {
@@ -76,7 +75,7 @@ namespace Reiki::graphics {
 
     void FrameBuffer::clear() const {
         glClearColor(m_clear.x, m_clear.y, m_clear.z, m_clear.w);
-        glClearDepth(1.f);// todo depth?
+        //glClearDepth(1.f);// todo depth?
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 

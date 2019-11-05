@@ -57,6 +57,8 @@ Reiki::core::Window::Window(const char* title, int width, int height) : m_title(
         throw std::runtime_error("Failed to create GLFW window!");
     }
 
+    glfwGetFramebufferSize(const_cast<GLFWwindow *>(m_window), &m_width, &m_height);
+
     glfwMakeContextCurrent(m_window);
 
     // Set GLFW window Callbacks
