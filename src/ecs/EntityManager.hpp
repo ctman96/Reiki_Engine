@@ -19,7 +19,14 @@ namespace Reiki::ECS {
         void update(float ms);
         //void draw(const math::mat3& projection);
 
-        template <typename T, typename... TArgs> T& addEntity();
+        template <typename T, typename... TArgs> T& addEntity(TArgs&&... mArgs) {
+            T* e(new T(std::forward<TArgs>(mArgs)...));
+            auto id = idCounter++;
+            e->id = id;
+            std::unique_ptr<Entity> uPtr{ e };
+            entities.emplace(id, std::move(uPtr));
+            return *e;
+        };
 
         template <typename T> T& getEntity(EntityId id) { return *(entities[id]); }
 
