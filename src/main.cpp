@@ -44,6 +44,7 @@ int main() {
 
     Renderable sprite({5.f,5.f}, {40.f,40.f}, 0.f, {1,0,1,1}, &shader);
     Renderable sprite2({100.f,200.f}, {1,1}, 0.f, {1,1,1,1}, &t2, &shader1);
+    Renderable sprite3({300.f,300.f}, {1,1}, 0.f, {1,1,1,1}, &t1, &shader1);
     SimpleRenderer renderer(vec2(window.getWidth(), window.getHeight()));
 
     while (!window.shouldClose()) {
@@ -63,6 +64,7 @@ int main() {
 
         renderer.submit(&sprite);
         renderer.submit(&sprite2);
+        renderer.submit(&sprite3);
         renderer.render();
 
         window.update();

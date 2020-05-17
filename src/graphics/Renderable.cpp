@@ -55,7 +55,7 @@ namespace Reiki::graphics {
     }
 
     Renderable::Renderable(const math::vec2 &position, const math::vec2 &scale, float rotation, const math::vec4 &color, Texture *texture, Shader *shader)
-            : m_position(position), m_scale({1,1}), m_rotation(rotation), m_color(color), m_shader(shader) {
+            : m_position(position), m_scale({1,1}), m_rotation(rotation), m_color(color), m_texture(texture), m_shader(shader) {
 
         m_vertexArray = new VertexArray();
 
