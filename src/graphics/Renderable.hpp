@@ -6,7 +6,7 @@
 #define REIKI_RENDERABLE_HPP
 
 #include <glad/glad.h>
-#include "../math/math.hpp"
+#include "../math/Math.hpp"
 #include "VertexArray.hpp"
 #include "VertexBuffer.hpp"
 #include "IndexBuffer.hpp"

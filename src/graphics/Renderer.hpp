@@ -7,7 +7,7 @@
 
 #include <deque>
 #include "Renderable.hpp"
-#include "../math/math.hpp"
+#include "../math/Math.hpp"
 
 namespace Reiki::graphics {
     class Renderer {

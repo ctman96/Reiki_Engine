@@ -12,7 +12,7 @@
 #define REIKI_ENTITY_H
 
 #include "Component.hpp"
-#include "../math/math.hpp"
+#include "../math/Math.hpp"
 
 namespace Reiki::ECS {
     using EntityId = std::size_t;

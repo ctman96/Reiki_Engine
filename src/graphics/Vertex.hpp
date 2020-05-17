@@ -5,7 +5,7 @@
 #ifndef REIKI_VERTEX_HPP
 #define REIKI_VERTEX_HPP
 
-#include "../math/math.hpp"
+#include "../math/Math.hpp"
 
 namespace Reiki::graphics {
     class Vertex {

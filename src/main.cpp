@@ -1,17 +1,5 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 #include <iostream>
-#include <graphics/VertexArray.hpp>
-#include <graphics/IndexBuffer.hpp>
-
-
-#include "core/Window.hpp"
-#include "math/math.hpp"
-#include "graphics/Shader.hpp"
-#include "utils/FileUtils.hpp"
-#include "graphics/Renderable.hpp"
-#include "graphics/SimpleRenderer.hpp"
-#include "ecs/ECS.hpp"
+#include "Reiki.hpp"
 
 
 

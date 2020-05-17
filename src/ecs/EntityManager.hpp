@@ -7,7 +7,7 @@
 
 #include <unordered_map>
 #include "Entity.hpp"
-#include "../math/math.hpp"
+#include "../math/Math.hpp"
 
 namespace Reiki::ECS {
     class EntityManager {

@@ -1,8 +1,9 @@
 ## Core source library
 set(REIKI_SOURCE_FILES
+        core/Core.hpp
         core/Window.cpp core/Window.hpp
 
-        math/math.hpp
+        math/Math.hpp
         math/vec2.cpp math/vec2.hpp
         math/vec3.cpp math/vec3.hpp
         math/vec4.cpp math/vec4.hpp
@@ -17,7 +18,7 @@ set(REIKI_SOURCE_FILES
 
         utils/FileUtils.hpp
 
-        graphics/graphics.hpp
+        graphics/Graphics.hpp
         graphics/Shader.cpp graphics/Shader.hpp
         graphics/VertexBuffer.cpp graphics/VertexBuffer.hpp
         graphics/IndexBuffer.cpp graphics/IndexBuffer.hpp

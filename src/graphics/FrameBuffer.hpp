@@ -6,7 +6,7 @@
 #define REIKI_FRAMEBUFFER_HPP
 
 #include <glad/glad.h>
-#include "../math/math.hpp"
+#include "../math/Math.hpp"
 #include "Texture.hpp"
 #include "VertexArray.hpp"
 #include "IndexBuffer.hpp"

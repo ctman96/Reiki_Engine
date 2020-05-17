@@ -6,7 +6,7 @@
 #define REIKI_TEXTUREDVERTEX_HPP
 
 
-#include "../math/math.hpp"
+#include "../math/Math.hpp"
 
 namespace Reiki::graphics {
     class TexturedVertex {

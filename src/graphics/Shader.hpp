@@ -10,7 +10,7 @@
 #include <glad/glad.h>
 #include <vector>
 #include <iostream>
-#include "../math/math.hpp"
+#include "../math/Math.hpp"
 #include "../utils/FileUtils.hpp"
 
 namespace Reiki::graphics {
