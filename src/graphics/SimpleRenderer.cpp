@@ -5,12 +5,12 @@
 #include "SimpleRenderer.hpp"
 
 namespace Reiki::graphics {
-    SimpleRenderer::SimpleRenderer(const math::vec2 &size) : m_size(m_size) {
-        //m_frameBuffer = new FrameBuffer(static_cast<GLsizei>(size.x), static_cast<GLsizei>(size.y));
+    SimpleRenderer::SimpleRenderer(const math::vec2 &size) : m_size(size) {
+        m_frameBuffer = new FrameBuffer(static_cast<GLsizei>(size.x), static_cast<GLsizei>(size.y));
     }
 
     SimpleRenderer::~SimpleRenderer() {
-        //delete m_frameBuffer;
+        delete m_frameBuffer;
     }
 
     void SimpleRenderer::submit(const Renderable *renderable) {
@@ -20,9 +20,9 @@ namespace Reiki::graphics {
 
     void SimpleRenderer::render() {
         // TODO: generate new framebuffer if screen size changes?
-        //m_frameBuffer->bind();
-        //m_frameBuffer->clear();
-
+        m_frameBuffer->bind();
+        m_frameBuffer->clear();
+        //glEnable(GL_DEPTH_TEST);
         while(!m_renderQueue.empty()){
             const Renderable* renderable = m_renderQueue.front();
 
@@ -30,11 +30,14 @@ namespace Reiki::graphics {
 
             m_renderQueue.pop_front();
         }
-        //glBindFramebuffer(GL_FRAMEBUFFER, 0);
-        //m_frameBuffer->bindTexture();
-        //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
-        //m_frameBuffer->unbindTexture();
-        //m_frameBuffer->unbind();
+        m_frameBuffer->unbind();
+        glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+        glEnable(GL_BLEND); glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glDisable(GL_DEPTH_TEST);
+        m_frameBuffer->bindTexture();
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
+        m_frameBuffer->unbindTexture();
     }
 
 
@@ -43,8 +46,10 @@ namespace Reiki::graphics {
         renderable->getIndexBuffer()->bind();
 
         const Texture* texture = renderable->getTexture();
-        if (texture != nullptr)
+        if (texture != nullptr) {
+            glEnable(GL_BLEND); glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             texture->bind();
+        }
 
         const Shader* shader = renderable->getShader();
         shader->use();

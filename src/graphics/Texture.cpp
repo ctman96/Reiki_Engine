@@ -27,6 +27,7 @@ namespace Reiki::graphics {
             error.append(path);
             throw std::runtime_error(error);
         }
+        m_path = std::string(path);
 
         stbi_uc* data = stbi_load(path, &m_width, &m_height, NULL, 4);
 //        if (data == NULL)
