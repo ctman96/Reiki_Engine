@@ -2,6 +2,8 @@
 set(REIKI_SOURCE_FILES
         core/Core.hpp
         core/Window.cpp core/Window.hpp
+        core/GameEngine.cpp core/GameEngine.hpp
+        core/GameState.hpp
 
         math/Math.hpp
         math/vec2.cpp math/vec2.hpp
