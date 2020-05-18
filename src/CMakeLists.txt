@@ -33,28 +33,25 @@ set(REIKI_SOURCE_FILES
 
 add_library(REIKI_CORE ${REIKI_SOURCE_FILES})
 # Include stb_image
-target_include_directories(REIKI_CORE PRIVATE ${PROJECT_SOURCE_DIR}/libs/stb_image)
+target_include_directories(REIKI_CORE PUBLIC ${PROJECT_SOURCE_DIR}/libs/stb_image)
 # Include GLFW
-target_include_directories(REIKI_CORE PRIVATE ${GLFW_INCLUDE_DIRS})
+target_include_directories(REIKI_CORE PUBLIC ${GLFW_INCLUDE_DIRS})
 # Include Glad
-target_include_directories(REIKI_CORE PRIVATE ${PROJECT_SOURCE_DIR}/libs/GLAD)
+target_include_directories(REIKI_CORE PUBLIC ${PROJECT_SOURCE_DIR}/libs/GLAD)
 # Link libraries
-target_link_libraries(REIKI_CORE PRIVATE ${GLFW_LIBRARIES} GLAD)
+target_link_libraries(REIKI_CORE PUBLIC ${GLFW_LIBRARIES} GLAD)
 
 
 ## Main Executable
 add_executable(${PROJECT_NAME} main.cpp)
 # Added this so policy CMP0065 doesn't scream
 set_target_properties(${PROJECT_NAME} PROPERTIES ENABLE_EXPORTS 0)
-# Include GLFW
-target_include_directories(${PROJECT_NAME} PRIVATE ${GLFW_INCLUDE_DIRS})
-# Include Glad
-target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/libs/GLAD)
 # Include src
-target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/src)
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/src)
 # Link Libraries
-target_link_libraries(${PROJECT_NAME} PRIVATE REIKI_CORE ${GLFW_LIBRARIES} GLAD)
+target_link_libraries(${PROJECT_NAME} PUBLIC REIKI_CORE ${GLFW_LIBRARIES} GLAD)
 
+#[[ Not sure if any of this is necessary?
 # Include Opengl
 if (OPENGL_FOUND)
     target_include_directories(${PROJECT_NAME} PUBLIC ${OPENGL_INCLUDE_DIR})
@@ -75,3 +72,4 @@ endif()
 if(IS_OS_LINUX)
     target_link_libraries(${PROJECT_NAME} PUBLIC ${CMAKE_DL_LIBS})
 endif()
+]]
